@@ -1,4 +1,5 @@
 import { useState } from "react";
+import "./index.css";
 
 export function App() {
   let [text, setText] = useState("");
@@ -27,30 +28,34 @@ export function App() {
 
   return (
     <>
-      <h1>Todo App</h1>
-      <form onSubmit={addTodo}>
-        <input
-          type="text"
-          placeholder="Enter Todo"
-          value={text}
-          onChange={(event) => {
-            console.log(event.target.value);
-            setText(event.target.value);
-          }}
-        />
-        <button type="submit">Add</button>
-      </form>
-      <ul>
-        {todo.map((item, index) => {
-          return (
-            <li key={index}>
-              {item}
-              <button onClick={() => editTodo(index)}>Edit</button>
-              <button onClick={() => deleteTodo(index)}>Delete</button>
-            </li>
-          );
-        })}
-      </ul>
+      <div className="flex justify-center mt-5">
+        <div>
+          <h1 className="text-4xl font-bold">Todo App</h1>
+          <form onSubmit={addTodo}>
+            <input
+              type="text"
+              placeholder="Enter Todo"
+              value={text}
+              onChange={(event) => {
+                console.log(event.target.value);
+                setText(event.target.value);
+              }}
+            />
+            <button type="submit">Add</button>
+          </form>
+          <ul>
+            {todo.map((item, index) => {
+              return (
+                <li key={index}>
+                  {item}
+                  <button onClick={() => editTodo(index)}>Edit</button>
+                  <button onClick={() => deleteTodo(index)}>Delete</button>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+      </div>
     </>
   );
 }
