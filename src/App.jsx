@@ -28,11 +28,12 @@ export function App() {
 
   return (
     <>
-      <div className="flex justify-center mt-5">
+      <div className="flex justify-center text-white mt-3">
         <div>
           <h1 className="text-4xl font-bold">Todo App</h1>
-          <form onSubmit={addTodo}>
+          <form className="mt-5" onSubmit={addTodo}>
             <input
+              className="p-2 rounded-lg text-black"
               type="text"
               placeholder="Enter Todo"
               value={text}
@@ -41,15 +42,22 @@ export function App() {
                 setText(event.target.value);
               }}
             />
-            <button type="submit">Add</button>
+            <button className="ml-4 bg-orange-400 p-2 rounded-lg" type="submit">
+              Add
+            </button>
           </form>
           <ul>
             {todo.map((item, index) => {
               return (
-                <li key={index}>
+                <li
+                  className="bg-white rounded-lg mt-3 mb-3 p-1 text-black flex justify-between"
+                  key={index}
+                >
                   {item}
-                  <button onClick={() => editTodo(index)}>Edit</button>
-                  <button onClick={() => deleteTodo(index)}>Delete</button>
+                  <div>
+                    <button className="p-1 bg-blue-500 text-white rounded-lg" onClick={() => editTodo(index)}>Edit</button>
+                    <button className="p-1 bg-red-600 ml-2 text-white rounded-lg" onClick={() => deleteTodo(index)}>Delete</button>
+                  </div>
                 </li>
               );
             })}
